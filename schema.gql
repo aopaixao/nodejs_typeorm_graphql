@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProdutoPedido {
+  produtoPedidoId: Float!
+  qtdProdutoPedido: Float!
+  precoProdutoPedido: String!
+  produto: Produto!
+}
+
+type Produto {
+  produtoId: Float!
+  nomeProduto: String!
+  descricaoProduto: String!
+  precoProduto: String!
+  qtdEstoque: Float!
+  dataCadastroProduto: String!
+  imagem: String!
+  categoria: Categoria!
+  produtoPedidos: [ProdutoPedido!]
+}
+
+type Categoria {
+  categoriaId: Float!
+  nomeCategoria: String!
+  descricaoCategoria: String!
+  produtos: [Produto!]
+}
+
+type Query {
+  produto(id: String!): Produto!
+  produtos: [Produto!]!
+  produtosByCategoria: [Produto!]!
+  categoria(id: String!): Categoria!
+  categorias: [Categoria!]!
+  produtoPedido(id: String!): ProdutoPedido!
+  produtoPedidos: [ProdutoPedido!]!
+}
