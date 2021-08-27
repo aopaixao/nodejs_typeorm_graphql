@@ -1,0 +1,70 @@
+type Produto {
+  produto_id: number
+  nome_produto: string | null
+  descricao_produto: string | null
+  preco_produto: number | null
+  qtd_estoque: number | null
+  data_cadastro_produto: Date | null
+  categoria_id: number
+  imagem: string | null
+}
+type Cliente {
+  cliente_id: number
+  email: string | null
+  username: string | null
+  senha: string | null
+  nome: string | null
+  cpf: string
+  telefone: string | null
+  data_nascimento: Date | null
+  endereco_id: number
+}
+type ProdutoPedido {
+  produto_pedido_id: number
+  qtd_produto_pedido: number | null
+  preco_produto_pedido: number | null
+  produto_id: number | null
+  pedido_id: number | null
+}
+type Pedido {
+  pedido_id: number
+  numero_pedido: number | null
+  valor_total_pedido: number | null
+  data_pedido: Date
+  status: boolean | null
+  cliente_id: number
+}
+type Endereco {
+  endereco_id: number
+  cep: string | null
+  rua: string | null
+  bairro: string | null
+  cidade: string | null
+  numero: string | null
+  complemento: string | null
+  uf: string | null
+}
+type Categoria {
+  categoria_id: number
+  nome_categoria: string | null
+  descricao_categoria: string | null
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  produto(id: numer!): Produto!
+  produtos: [Produto!]!
+}
+
+type Mutation {
+  createProduto(produto_id: number, nome_produto: string | null, 
+                descricao_produto: string | null, preco_produto: number | null, 
+                qtd_estoque: number | null, data_cadastro_produto: Date | null, categoria_id: number): Produto!
+  createCategoria(nome_categoria: string | null, descricao_categoria: string | null): Categoria!
+}
+
+
